@@ -1,0 +1,34 @@
+---
+# tasks file for roles/app-tier
+- name: Install Tomcat
+  yum:
+    name: tomcat
+    state: latest
+
+- name: Create Ansible Tomcat Directory
+  file:
+    path: /usr/share/tomcat/webapps/ansible
+    state: directory
+
+- name: Copy static index.html to Tomcat webapps/ansible/index.html
+  template:
+    src: index.html.j2
+    dest: /usr/share/tomcat/webapps/ansible/index.html
+    mode: 0644
+
+- name: Start tomcat
+  service:
+    name: tomcat
+    state: started
+    enabled: yes
+
+- name: install apache
+  yum:
+    name: httpd
+    state: latest
+
+- name: start apache
+  service:
+    name: httpd
+    state: started
+    enabled: yes

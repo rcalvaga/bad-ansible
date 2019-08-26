@@ -1,0 +1,12 @@
+---
+# tasks file for roles/db-tier
+- name: install postgres
+  yum:
+    name: postgresql-server
+    state: latest
+
+- name: start postgres
+  service:
+    name: postgresql.service
+    state: started
+    enabled: yes
