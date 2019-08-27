@@ -5,15 +5,15 @@
     name: tomcat
     state: latest
 
-- name: Create Ansible Tomcat Directory
+- name: Create {{ TOMCAT_APP_DIR }} Tomcat Directory
   file:
-    path: /usr/share/tomcat/webapps/ansible
+    path: {{ TOMCAT_APP_DIR }}
     state: directory
 
-- name: Copy static index.html to Tomcat webapps/ansible/index.html
+- name: Copy static index.html to Tomcat {{ TOMCAT_APP_DIR }}/index.html
   template:
     src: index.html.j2
-    dest: /usr/share/tomcat/webapps/ansible/index.html
+    dest: {{ TOMCAT_APP_DIR }}/index.html
     mode: 0644
 
 - name: Start tomcat
