@@ -1,24 +1,28 @@
 ---
 - name: Basic Configuration for All Servers
   hosts: all
+  gather_facts: false
   become: yes
   roles:
    - common
 
 - name: Configuring DB Servers
   hosts: appdbs
+  gather_facts: false
   become: yes
   roles:
    - db-tier
 
 - name: Configuring Webservers
   hosts: apps
+  gather_facts: false
   become: yes
   roles:
    - app-tier
 
 - name: configuring LB Servers
   hosts: frontends
+  gather_facts: false
   become: yes
   roles:
    - lb-tier
