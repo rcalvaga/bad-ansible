@@ -32,6 +32,6 @@
 
     - name: Remove index.html
       file:
-        path: /tmp/index.html
+        path: "{{TOMCAT_APP_DIR }}/index.html"
         state: absent
 ...
