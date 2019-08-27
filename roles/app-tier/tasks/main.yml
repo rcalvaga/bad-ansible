@@ -7,13 +7,13 @@
 
 - name: Create {{ TOMCAT_APP_DIR }} Tomcat Directory
   file:
-    path: {{ TOMCAT_APP_DIR }}
+    path: "{{ TOMCAT_APP_DIR }}"
     state: directory
 
 - name: Copy static index.html to Tomcat {{ TOMCAT_APP_DIR }}/index.html
   template:
     src: index.html.j2
-    dest: {{ TOMCAT_APP_DIR }}/index.html
+    dest: "{{ TOMCAT_APP_DIR }}/index.html"
     mode: 0644
 
 - name: Start tomcat
