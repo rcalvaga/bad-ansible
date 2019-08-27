@@ -3,7 +3,7 @@
 - name: install postgres
   yum:
     name: postgresql-server
-    state: latest
+    state: present
 
 - name: start postgres
   service:
