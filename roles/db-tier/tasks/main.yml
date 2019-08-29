@@ -5,6 +5,9 @@
     name: postgresql-server
     state: present
 
+- name: initialize postgresql db
+  command: postgresql-setup initdb
+
 - name: start postgres
   service:
     name: postgresql.service
